@@ -6,3 +6,76 @@ body {
 a {
   color: #00B7FF;
 }
+.accordion{
+  /*width: 420px;*/
+  width:100%;
+  height: 35px;
+  background-color: #184369;
+  color:white;
+}
+.accordion-text{
+  /*width: 420px;*/
+  width:100%;
+  color:#338ecf;
+  border: 1px solid #ebf2f9;
+  font-size:12px;
+  padding:12px;
+}
+.device-box{
+  margin-bottom: 20px;
+}
+.heading1{
+  color:#175c99;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+.heading2{
+  color:#94a5c5;
+  margin-bottom: 25px;
+  font-size: 12px;
+
+}
+
+.protocol-box{
+  /*width:450px;*/
+  width:100%;
+  height: 110px;
+  background-color: #d8e8f6;
+  padding-left:20px;
+}
+.space1{
+  margin-left: 45px;
+}
+.braket1{
+  /*border-right:25px solid white;*/
+}
+.summeryBox{
+  border: 1px solid #ebf2f9;
+  padding:20px;
+  width:100%
+}
+.widget4-box{
+  border-bottom: 1px solid lightgrey;
+}
+.box1-device{
+  color:#338ecf;
+  margin-bottom: 10px;
+}
+.summeryBox .startLearning{
+  width:140px;
+  height: 30px;
+  background-color: #184369;
+  color:white;
+  display: inline-block;
+  line-height: 28px;
+  padding-left: 10px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.summeryBox .buttons{
+  display: block;
+  padding:10px;
+}
+.summeryBox .clear{
+  display: inline-block;
+}
