@@ -12,6 +12,8 @@ a {
   height: 35px;
   background-color: #184369;
   color:white;
+  margin-bottom: 5px;
+  padding-left: 20px;
 }
 .accordion-text{
   /*width: 420px;*/
@@ -32,7 +34,9 @@ a {
 .heading2{
   color:#94a5c5;
   margin-bottom: 25px;
-  font-size: 12px;
+  font-size: 19px;
+  margin-top: 5px;
+  display: inline-block;
 
 }
 
@@ -78,4 +82,38 @@ a {
 }
 .summeryBox .clear{
   display: inline-block;
+  cursor: pointer;
+}
+.caret {
+  border-left: 7px solid transparent;!important;
+  border-right: 7px solid transparent;!important;
+  border-top: 7px solid white;!important;
+  position: relative;
+  top: 3px;
+}
+.module1-check{
+  position: relative;
+  top: 5px;
+  left: 5px;
+}
+.check-text{
+  position:relative;
+  left: 5px;
+  top: 3px;
+}
+.module4Group{
+  margin-bottom: 20px;
+}
+.module4Text{
+  color:#338ecf;
+  font-size: 12px;
+}
+.selectText{
+  font-size: 19px;
+  color: #94a5c5;
+  display: inline-block;
+
+}
+.module4-time{
+  display:inline-block;
 }

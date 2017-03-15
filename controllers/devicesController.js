@@ -1,12 +1,20 @@
 
 "use strict"
-var dataHandler = require('../handlers/devicesDataHandler.js');
+var devicesDataHandler = require('../handlers/devicesDataHandler.js');
 
-class dataController {
+class deviceController {
     constructor(){
 
     }
     getDevices(){
-        return dataHandler.getDevices();
+        var handler = new devicesDataHandler();
+        return handler.getDevices();
+    }
+    setDevices(data){
+        return new Promise((resolve, reject) => {
+           resolve();
+        });
     }
 }
+
+module.exports = deviceController;

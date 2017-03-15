@@ -1,12 +1,15 @@
 <div class="heading1">1 Select Blackboxes</div>
-<div class="accordion" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    <span class="caret"></span><input type="checkbox" > group 1
-</div>
-<div class="collapse" id="collapseExample">
-    <div class="accordion-text">
-        <div class="device-box"><input type="checkbox" > device 11</div>
-        <div class="device-box"><input type="checkbox" > device 12</div>
-        <div class="device-box"><input type="checkbox" > device 13</div>
 
+<span ng-repeat = "group in deviceGroups track by $index">
+    <div  ng-init="down = true" ng-click="down = !down" class="accordion" role="button" data-toggle="collapse" href="#collapseExample{{$index}}" aria-expanded="false" aria-controls="collapseExample">
+        <i ng-show="down" class="fa fa-caret-down" aria-hidden="true"></i>
+        <i ng-show="!down" class="fa fa-caret-up" aria-hidden="true"></i>
+        <input ng-click="selectGroup($index);$event.stopPropagation();" class="module1-check" ng-model="group.selected" type="checkbox" > <span class="check-text">{{group.name}}</span>
     </div>
-</div>
+    <div class="collapse" id="collapseExample{{$index}}">
+        <div class="accordion-text">
+            <div ng-repeat="device in group.devices track by $index" class="device-box"><input ng-click="selectDevice($parent.$index,$index)" ng-model="device.selected" type="checkbox" > {{device.name}}</div>
+        </div>
+    </div>
+
+</span>

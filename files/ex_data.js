@@ -1,4 +1,4 @@
-var DATA = {
+{
 	"device_groups": [{
 		"id": "1",
 		"name": "group 1",

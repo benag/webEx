@@ -1,12 +1,16 @@
 
+"use strict"
 
-var dataHandler = require('dataHandler');
+var protocolsDataHandler = require('../handlers/protocolsDataHandler.js');
 
-class dataController {
+class protocolController {
     constructor(){
 
     }
-    getDevices(){
-        dataHandler.getDevices()
+    getProtocols(){
+        var handler = new protocolsDataHandler();
+        return handler.getProtocols();
     }
 }
+
+module.exports = protocolController;

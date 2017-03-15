@@ -1,12 +1,15 @@
 
+"use strict"
+var timeDataHandler = require('../handlers/timeDataHandler.js');
 
-var dataHandler = require('dataHandler');
-
-class dataController {
+class timeController {
     constructor(){
 
     }
-    getDevices(){
-        dataHandler.getDevices()
+    getTimes(){
+        var handler = new timeDataHandler();
+        return handler.getTimes();
     }
 }
+
+module.exports = timeController;
