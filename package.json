@@ -7,6 +7,12 @@
     "jade": ">= 0.0.1"
   },
   "devDependencies": {
-    "config": "^1.25.1"
+    "cloudant": "^1.7.1",
+    "config": "^1.25.1",
+    "mocha-jshint": "^2.3.1"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha"
   }
 }

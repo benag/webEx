@@ -30,10 +30,12 @@ app.configure('production', function(){
 let API = new routes(app);
 
 
+
+
 //app.get('/', routes.index);
 //app.get('/devices', routes.getDevices);
-
-app.listen(3000, function(){
+var port = (process.env.VCAP_APP_PORT || 3000);
+app.listen(port, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 
 
