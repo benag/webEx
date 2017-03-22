@@ -12,8 +12,6 @@ class cloudantService {
             this.cloudant = Cloudant({vcapServices: JSON.parse(process.env.VCAP_SERVICES)},this.init);
         }else{
             this.cloudant = Cloudant(url);
-
-
         }
     }
     getDB(){

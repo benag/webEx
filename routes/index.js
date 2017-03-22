@@ -4,6 +4,7 @@
 var devicesController  = require('../controllers/devicesController');
 var protocolsController  = require('../controllers/protocolsController');
 var timeController  = require('../controllers/timeController');
+var redisService = require('../services/redisService');
 
 class routes {
 
@@ -13,6 +14,7 @@ class routes {
     this.app.get('/protocols', this.getProtocols);
     this.app.get('/times', this.getTimes);
     this.app.post('/devices', this.setDevices);
+    this.app.post('/views', this.setViews);
   }
 
   getDevices(req, res) {
@@ -54,6 +56,21 @@ class routes {
     .catch(function (err) {
       // process via slack or 3rd party..
     })
+  }
+  setViews(req, res){
+    var redis  =  new redisService();
+    redis.get('views')
+    .then(function (result) {
+      if (results != null){
+        res.json(results);
+      }else{
+        redis.set('views','view',1);
+      }
+    })
+    .catch(function (err) {
+      // process via slack or 3rd party..
+    })
+
   }
 
 }
