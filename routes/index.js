@@ -61,7 +61,7 @@ class routes {
     var redis  =  new redisService();
     redis.get('views')
     .then(function (result) {
-      if (results != null){
+      if (result != null){
         res.json(results);
       }else{
         redis.set('views','view',1);

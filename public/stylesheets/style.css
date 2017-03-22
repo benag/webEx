@@ -20,7 +20,7 @@ a {
   width:100%;
   color:#338ecf;
   border: 1px solid #ebf2f9;
-  font-size:12px;
+  font-size:14px;
   padding:12px;
 }
 .device-box{
@@ -29,7 +29,7 @@ a {
 .heading1{
   color:#175c99;
   margin-bottom: 5px;
-  font-size: 12px;
+  font-size: 14px;
 }
 .heading2{
   color:#94a5c5;
@@ -106,7 +106,7 @@ a {
 }
 .module4Text{
   color:#338ecf;
-  font-size: 12px;
+  font-size: 14px;
 }
 .selectText{
   font-size: 19px;
@@ -116,4 +116,11 @@ a {
 }
 .module4-time{
   display:inline-block;
+}
+.mainImage{
+  width:100%;
+  height: 200px;
+}
+.mainDevices{
+  margin-top:20px;
 }
