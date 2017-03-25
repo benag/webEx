@@ -5,27 +5,34 @@ var devicesController  = require('../controllers/devicesController');
 var protocolsController  = require('../controllers/protocolsController');
 var timeController  = require('../controllers/timeController');
 var redisService = require('../services/redisService');
+var NodeCache = require( "node-cache" );
+var myCache = new NodeCache();
 
 class routes {
 
   constructor(app){
     this.app = app;
     this.app.get('/devices', this.getDevices);
-    this.app.get('/protocols', this.getProtocols);
-    this.app.get('/times', this.getTimes);
     this.app.post('/devices', this.setDevices);
-    this.app.post('/views', this.setViews);
+    this.app.post('/basket', this.setBasket);
+    this.app.get('/basket', this.getBasket);
   }
 
   getDevices(req, res) {
-    var controller  =  new devicesController();
-    controller.getDevices()
-    .then(function (groups) {
-      res.json(groups)
-    })
-    .catch(function (err) {
-      // process via slack or 3rd party..
-    })
+    var cachedDevices = myCache.get( "devices" );
+    if ( cachedDevices == undefined ){
+      var controller  =  new devicesController();
+      controller.getDevices()
+      .then(function (groups) {
+        myCache.set( "devices",groups, 60 );
+        res.json(groups)
+      })
+      .catch(function (err) {
+        // process via slack or 3rd party..
+      })
+    }else{
+      res.json(cachedDevices)
+    }
   }
   getProtocols(req, res) {
     var controller  =  new protocolsController();
@@ -57,24 +64,33 @@ class routes {
       // process via slack or 3rd party..
     })
   }
-  setViews(req, res){
+  setBasket(req, res){
+    var devices = JSON.stringify(req.body.data.devices);
     var redis  =  new redisService();
-    redis.get('views')
-    .then(function (result) {
-      if (result != null){
-        res.json(results);
+    redis.set('baskets','basket',devices)
+    .then(function(status){
+      if (status === 'OK'){
+        res.json(status);
       }else{
-        redis.set('views','view',1);
+        res.json('ERROR');
       }
     })
-    .catch(function (err) {
-      // process via slack or 3rd party..
-    })
-
   }
-
+  getBasket(req, res){
+    var redis  =  new redisService();
+    redis.get('baskets')
+    .then(function(baskets){
+      if (baskets){
+        res.json(baskets);
+      }else{
+        res.json('ERROR');
+      }
+    })
+  }
 }
 
+
 module.exports = routes;
+
 
 

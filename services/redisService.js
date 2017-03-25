@@ -44,7 +44,7 @@ class redisService {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve(resp);
+                    resolve(resp.basket);
                 }
             });
         });

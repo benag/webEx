@@ -18,50 +18,31 @@ ex.directive('widget4', function (restClient, appGlobal,$rootScope) {
                     alert('There was a problem with your submission');
                 })
             };
+            scope.getbasket = function(){
+                restClient.getBasket( )
+                .then(function(data){
+                    var devices  = JSON.parse(data.data);
+                    $rootScope.$broadcast('show',{devices:devices});
+                }).catch(function(err){
+
+                })
+            };
+            scope.addbasket = function() {
+                restClient.addBasket(scope.groups )
+                .then(function(data){
+                    alert('Submitted');
+                }).catch(function(err){
+                    alert('There was a problem with your submission');
+                })
+            };
 
             scope.groups = appGlobal.get.devices;
-            scope.protocols = appGlobal.get.protocols;
-            scope.times = appGlobal.get.times;
-
-            scope.timeSelected = function(){
-                for (var i = 0 ; i <  scope.times.length; i++){
-                    if (scope.times[i].selected) return true;
-                }
-                return false;
-            };
 
             scope.$watch(function () { return appGlobal.get.devices }, function (newVal, oldVal) {
                 if (typeof newVal !== 'undefined') {
                     scope.groups = appGlobal.get.devices;
                 }
             }, true);
-
-            scope.$watch(function () { return appGlobal.get.protocols }, function (newVal, oldVal) {
-                if (typeof newVal !== 'undefined') {
-                    scope.protocols = appGlobal.get.protocols;
-                }
-            }, true);
-
-            scope.$watch(function () { return appGlobal.get.times }, function (newVal, oldVal) {
-                if (typeof newVal !== 'undefined') {
-                    scope.times = appGlobal.get.times;
-                }
-            }, true);
-
-            scope.timeSelected = function(){
-                for (var i = 0 ; i <  scope.times.length; i++){
-                    if (scope.times[i].selected) return true;
-                }
-                return false;
-            };
-
-            scope.protocolSelected = function(){
-
-                for (var i = 0 ; i <  scope.protocols.length; i++){
-                    if (scope.protocols[i].selected) return true;
-                }
-                return false;
-            };
 
         }
     };

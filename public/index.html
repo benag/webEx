@@ -1,4 +1,4 @@
-<html>
+<html ng-app="webEx">
     <head>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"
                 integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -15,9 +15,8 @@
         <script src="bower_components\ui-router\release\angular-ui-router.min.js"></script>
         <script src="js/app.js"></script>
         <script src="js/controllers/dashboardController.js"></script>
+        <script src="js/controllers/modalController.js"></script>
         <script src="js/directives/widget1Directive.js"></script>
-        <script src="js/directives/widget2Directive.js"></script>
-        <script src="js/directives/widget3Directive.js"></script>
         <script src="js/directives/widget4Directive.js"></script>
         <script src="js/services/webRestService.js"></script>
         <script src="js/services/appGlobalService.js"></script>
@@ -25,8 +24,26 @@
 
 
     </head>
-    <body class="container-fluid" ng-app="webEx">
+    <body class="container" >
         <ui-view></ui-view>
 
     </body>
+    <div id="myModal" class="modal fade" ng-controller="modalController" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Your Basket</h4>
+                </div>
+                <div class="modal-body">
+                    <div ng-repeat="device in devices track by $index" class="devices">
+                        {{device}}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </html>

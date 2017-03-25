@@ -25,35 +25,25 @@ angular.module('webEx').factory("restClient", ['$http','$q',
             return devices;
         };
 
-        var getSelectedProtocols = function(protocols){
-            var selectedProtocols = [];
-            for (var i = 0; i < protocols.length; i++){
-                if (protocols[i].selected) selectedProtocols.push(protocols[i].name);
-            }
-            return selectedProtocols;
+
+        var addBasket  = function(groups){
+            return $http.post('/basket',{data:{devices:getSelectedDevices(groups)}});
         };
-
-        var getSelectedTimes = function(times){
-            var selectedTimes = [];
-            for (var i = 0; i < times.length; i++){
-                if (times[i].selected) selectedTimes.push(times[i].name);
-            }
-            return selectedTimes;
-
+        var getBasket = function(){
+            return $http.get('/basket');
         };
+        var submitDevices = function(groups){
 
-        var submitDevices = function(groups, protocols, times){
-
-            return $http.post('/devices',{data:{devices:getSelectedDevices(groups),times: getSelectedTimes(times), protocols: getSelectedProtocols(protocols) }});
+            return $http.post('/devices',{data:{devices:getSelectedDevices(groups)}});
             //return $http.get('/devices' + '?' + )
         };
 
 
         return {
             getDevices: getDevices,
-            getProtocols: getProtocols,
-            getTimes: getTimes,
-            submitDevices: submitDevices
+            submitDevices: submitDevices,
+            addBasket: addBasket,
+            getBasket: getBasket
         };
     }
 ]);

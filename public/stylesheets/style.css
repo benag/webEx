@@ -29,7 +29,7 @@ a {
 .heading1{
   color:#175c99;
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 16px;
 }
 .heading2{
   color:#94a5c5;
@@ -70,11 +70,12 @@ a {
   height: 30px;
   background-color: #184369;
   color:white;
-  display: inline-block;
   line-height: 28px;
   padding-left: 10px;
   margin-left: 20px;
   cursor: pointer;
+  display: block;
+  margin-top:20px;
 }
 .summeryBox .buttons{
   display: block;
@@ -122,5 +123,5 @@ a {
   height: 200px;
 }
 .mainDevices{
-  margin-top:20px;
+  margin-top:50px;
 }
