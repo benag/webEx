@@ -2,8 +2,6 @@
 "use strict"
 
 var devicesController  = require('../controllers/devicesController');
-var protocolsController  = require('../controllers/protocolsController');
-var timeController  = require('../controllers/timeController');
 var redisService = require('../services/redisService');
 var NodeCache = require( "node-cache" );
 var myCache = new NodeCache();
